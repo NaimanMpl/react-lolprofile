@@ -1,0 +1,46 @@
+import '../scss/SearchBar.scss';
+
+const SearchBar = ({ text, width, borderRadius, padding, fontSize, imgSize }) => {
+
+  return (
+    <div className="searchbar">
+      <input 
+        type="text"
+        placeholder={text}
+        style= {
+          {
+            width: `${width}px`,
+            borderRadius: `${borderRadius}px 0 0 ${borderRadius}px`,
+            padding: padding,
+            fontSize: `${fontSize}rem`
+          }
+        }
+      />
+      <img 
+        style={
+          { 
+            width: `${imgSize}px`,
+            borderRadius: `0 ${borderRadius}px ${borderRadius}px 0`,
+            padding: padding
+          }
+        }
+        src="../img/search.svg" 
+        alt="Go!"
+        onClick={ () => { console.log('Oui') } }
+      >
+      </img>
+    </div>
+  );  
+}
+
+SearchBar.defaultProps = {
+  text: "Search Yourself or a Champion",
+  borderRadius: "50",
+  width: "600",
+  padding: "20px 40px",
+  fontSize: "1.2",
+  imgSize: "22"
+
+}
+
+export default SearchBar;

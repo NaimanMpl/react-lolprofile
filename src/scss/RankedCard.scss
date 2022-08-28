@@ -1,0 +1,43 @@
+.ranked-card {
+    background-color: #191935;
+    padding: 20px 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+
+    .title {
+        display: flex;
+        justify-content: space-between;
+        img {
+            width: 10px;
+            background: #252549;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        div {
+            display: flex;
+            gap: 10px;
+    
+            hr {
+                width: 2px;
+                border: none;
+                background-color: #4372F1;
+            }
+        }
+    }
+
+    .body {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left-col {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            img {
+                width: 60px;
+            }
+        }
+    }
+}

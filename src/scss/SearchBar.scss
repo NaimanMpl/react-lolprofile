@@ -1,0 +1,15 @@
+.searchbar {
+    display: flex;
+    align-items: center;
+
+    input {
+        border: none;
+        outline: none;
+    }
+    
+    img {
+        background-color: white;
+        cursor: pointer;
+    }
+
+}

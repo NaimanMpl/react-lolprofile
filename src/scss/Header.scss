@@ -1,0 +1,37 @@
+header {
+    display: flex;
+    .left-col {
+        padding: 10px 20px;
+        border: 0.1px solid #313348;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        img {
+            width: 15px;
+        }
+    }
+
+    .right-col {
+        width: 100vw;
+        border: 1px solid #313348;
+        padding: 10px 20px;
+        ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 15px;
+            
+            .download-app-cta {
+                margin-right: auto;
+            }
+
+            .img-cta {
+                margin-left: 20px;
+                display: flex;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+    }
+}

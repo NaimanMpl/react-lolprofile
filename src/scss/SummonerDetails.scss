@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+span {
+    color: white;
+}
+
+.SummonerDetails {
+    padding: 0;
+    margin: 0;
+    color: #cddcfe;
+    margin: 0 15%;
+    margin-top: 100px;
+
+    .summoner-details-container {
+        display: flex;
+        .summoner-details-left {
+            width: 30vw;
+
+            .ChampionStats {
+                margin-top: 20px;
+                background-color: #191935;
+                border-radius: 5px;
+            }
+
+            .champions-stats-title {
+                border-bottom: solid;
+                border-color: #07071F;
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 10px;
+
+                hr {
+                    margin-right: 10px;
+                    width: 2px;
+                    border: none;
+                    background-color: #4372F1;
+                }
+
+                h4 {
+                    color: white;
+                    margin-right: auto;
+                }
+
+                select {
+                    background-color: transparent;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    cursor: pointer;
+                }
+
+            }
+        }
+        .summoner-details-right {
+            width: 100%;
+        }
+    }
+
+}
+
+.summoner-profile {
+    display: flex;
+    gap: 20px;
+
+    img {
+        height: 100px;
+        width: 100px;
+        margin: 0;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        button {
+            width: 100px;
+        }
+    }
+}
+
+.nav {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
