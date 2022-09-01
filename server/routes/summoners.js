@@ -1,8 +1,10 @@
 import { DDragon, PlatformId, RiotAPI, RiotAPITypes } from '@fightmegg/riot-api';
+import dotenv from 'dotenv';
 import express, { response } from 'express';
+dotenv.config();
 
 const router = express.Router();
-const RIOT_API_KEY = 'RGAPI-351fe121-f912-422c-a4bf-20d0f28fedbd';
+const RIOT_API_KEY = process.env.RIOT_API_KEY;
 
 const riotApi = new RiotAPI(RIOT_API_KEY);
 

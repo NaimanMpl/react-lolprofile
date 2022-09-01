@@ -1,12 +1,20 @@
+import { useNavigate } from 'react-router-dom';
 import '../scss/SearchBar.scss';
 
 const SearchBar = ({ text, width, borderRadius, padding, fontSize, imgSize }) => {
+
+  const navigate = useNavigate();
 
   return (
     <div className="searchbar">
       <input 
         type="text"
         placeholder={text}
+        onKeyDown= {
+          (e) => {
+            if (e.key === 'Enter' || e.key === 13) navigate(`/summoners/${e.target.value}`);
+          }
+        }
         style= {
           {
             width: `${width}px`,

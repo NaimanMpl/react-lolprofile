@@ -1,7 +1,9 @@
 import { DDragon, PlatformId, RiotAPI, RiotAPITypes } from '@fightmegg/riot-api';
+import dotenv from 'dotenv';
 import express from 'express';
+dotenv.config();
 
-const RIOT_API_KEY = 'RGAPI-351fe121-f912-422c-a4bf-20d0f28fedbd';
+const RIOT_API_KEY = process.env.RIOT_API_KEY;
 
 const riotApi = new RiotAPI(RIOT_API_KEY);
 
@@ -35,7 +37,7 @@ router.param('summonerName', async (req, res, next, summonerName) => {
             puuid: sum.puuid,
             params: {
                 type: matchType,
-                count: 5
+                count: 10
             }
         });
 

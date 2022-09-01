@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ClipLoader from 'react-spinners/ClipLoader';
 import Button from "../components/Button";
 import ChampionCard from "../components/ChampionCard";
 import Header from "../components/Header";
@@ -12,6 +13,7 @@ const SummonerDetails = () => {
   const [ summoner, setSummonerData ] = useState([]);
   const [ matchHistoryData, setMatchHistoryData ] = useState([]);
   const [ championStatsData, setChampionStatsData ] = useState([]);
+  const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
     const fetchSummonerData = async () => {
@@ -48,6 +50,25 @@ const SummonerDetails = () => {
       setChampionStatsData(championStats);
     }
     fetchChampionStatsData();
+  }, []);
+
+  useEffect(() => {
+    const fetchMatchHistoryData = async () => {
+      const res = await fetch(
+        `/matchHistory/${summonerName}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json'
+          }
+        }
+      );
+      const matchHistory = await res.json();
+      setMatchHistoryData(matchHistory);
+      setLoading(false);
+    }
+    fetchMatchHistoryData();
   }, []);
 
   return (
@@ -105,22 +126,49 @@ const SummonerDetails = () => {
                   </div>
                   {championStatsData.map((champion, index) => {
                     return (
-                      <ChampionCard 
-                        title={champion.name}
-                        games={champion.games}
-                        kda={champion.kda}
-                        kills={champion.kills}
-                        deaths={champion.deaths}
-                        assists={champion.assists}
-                        wins={champion.wins}
-                        squareIconUrl={champion.squareIconUrl}
-                      />
+                      <div key={index}>
+                        <ChampionCard 
+                          title={champion.name}
+                          games={champion.games}
+                          kda={champion.kda}
+                          kills={champion.kills}
+                          deaths={champion.deaths}
+                          assists={champion.assists}
+                          wins={champion.wins}
+                          squareIconUrl={champion.squareIconUrl}
+                          key={index}
+                        />
+                      </div>
                     )
                   })}
                 </div>
               </div>
               <div className="summoner-details-right">
-                <h1>Match History</h1>
+                <div className="summoner-match-history">
+                  <div className="summoner-match-history-head">
+                    <div className="summoner-match-history-title">
+                      <div>
+                        <hr></hr>
+                        <h4>Match history</h4>
+                      </div>
+                      <select name="match-types">
+                        <option value="ranked">All Matches</option>
+                        <option value="normal">Normal</option>
+                        <option value="tourney">Tournoi</option>
+                      </select>
+                      <input
+                        type="search"
+                        placeholder="Search Champion or Played With..."
+                      >
+                      </input>
+                    </div>
+                    <div className="match-history-history-subtitle">
+                      {
+                        loading ? <div className="loading"><ClipLoader color={'#4372F1'} size={150}/></div> : <h1>It Works !</h1>
+                      }
+                    </div>
+                  </div>
+                </div>
             </div>
             </div>
           </div>

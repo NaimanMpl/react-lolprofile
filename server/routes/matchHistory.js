@@ -1,8 +1,10 @@
 import { PlatformId, RiotAPI } from '@fightmegg/riot-api';
+import dotenv from 'dotenv';
 import express from 'express';
+dotenv.config();
 
 const router = express.Router();
-const RIOT_API_KEY = 'RGAPI-351fe121-f912-422c-a4bf-20d0f28fedbd';
+const RIOT_API_KEY = process.env.RIOT_API_KEY;
 
 const riotApi = new RiotAPI(RIOT_API_KEY);
 
@@ -37,6 +39,13 @@ router.param('summonerName', async (req, res, next, summonerName) => {
         matches.forEach((m) => {
             matchData.push(m);
         });
+
+        let wins = 0;
+        matchData.forEach(match => {
+            const participant = match.info.participants.find(player => player.summonerId === summoner.id);
+            if (participant.win) wins++;
+        });
+        matchData.push(wins/matchData.length);
 
         req.matchHistory = matchData;
     } catch (e) {
